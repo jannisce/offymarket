@@ -86,6 +86,8 @@ docker compose up
 ```
 - Backend expuesto en `http://localhost:3000/posts`
 - Frontend servido desde Nginx en `http://localhost:5173`
+- El build por defecto del frontend usa `http://localhost:3000` como `VITE_API_BASE_URL`,
+  aprovechando el puerto expuesto del backend hacia la máquina host.
 - Para apuntar el frontend a otro backend durante el build:
   ```bash
   docker compose build --build-arg VITE_API_BASE_URL=http://mi-backend:3000 frontend
