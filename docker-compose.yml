@@ -1,0 +1,19 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    command: npm start
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: http://backend:3000
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
